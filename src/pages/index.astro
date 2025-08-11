@@ -1,0 +1,80 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.image-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+			}
+			
+			.image-item {
+				position: relative;
+				overflow: hidden;
+				border-radius: 8px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				transition: transform 0.3s ease;
+			}
+			
+			.image-item:hover {
+				transform: translateY(-4px);
+			}
+			
+			.image-item img {
+				width: 100%;
+				height: 300px;
+				object-fit: cover;
+				display: block;
+			}
+			
+			@media (max-width: 768px) {
+				.image-grid {
+					grid-template-columns: 1fr;
+					gap: 1rem;
+					padding: 1rem;
+				}
+				
+				.image-item img {
+					height: 250px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="image-grid">
+				<div class="image-item">
+					<img src="/blog-placeholder-1.jpg" alt="Gallery Image 1" />
+				</div>
+				<div class="image-item">
+					<img src="/blog-placeholder-2.jpg" alt="Gallery Image 2" />
+				</div>
+				<div class="image-item">
+					<img src="/blog-placeholder-3.jpg" alt="Gallery Image 3" />
+				</div>
+				<div class="image-item">
+					<img src="/blog-placeholder-4.jpg" alt="Gallery Image 4" />
+				</div>
+				<div class="image-item">
+					<img src="/blog-placeholder-5.jpg" alt="Gallery Image 5" />
+				</div>
+				<div class="image-item">
+					<img src="/blog-placeholder-about.jpg" alt="Gallery Image 6" />
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

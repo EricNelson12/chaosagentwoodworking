@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minimal wooden clog icon">
+  <title>Chaos Agent Woodworking - Clog Favicon</title>
+  <defs>
+    <style>
+      .stroke { fill: none; stroke: #3B220F; stroke-linecap: round; stroke-linejoin: round; stroke-width: 18; }
+      .inner { fill: none; stroke: #3B220F; stroke-linecap: round; stroke-linejoin: round; stroke-width: 12; }
+    </style>
+  </defs>
+
+  <!-- Background is transparent so it works as a favicon on any page -->
+  <!-- Outer clog outline -->
+  <path class="stroke" d="
+    M26 140
+    C34 98, 78 82, 116 86
+    C154 90, 188 120, 212 122
+    C236 124, 248 118, 238 156
+    C230 186, 208 194, 180 194
+    L62 194
+    C44 194, 30 178, 26 140
+    Z
+  " />
+
+  <!-- Sole detail -->
+  <path class="inner" d="
+    M44 164
+    C76 160, 104 156, 138 162
+    C172 168, 196 158, 226 156
+  " />
+
+  <!-- Small toe/arch curve to give character -->
+  <path class="inner" d="
+    M150 186
+    C158 180, 170 172, 186 172
+  " />
+</svg>
