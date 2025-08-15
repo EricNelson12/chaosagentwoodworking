@@ -79,6 +79,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				max-width: 500px;
 			}
 			
+			.cta-buttons {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+			
 			.cta-button {
 				display: inline-block;
 				background: #D2691E;
@@ -96,6 +102,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				background: #CD853F;
 				transform: translateY(-2px);
 				box-shadow: 0 8px 25px rgba(210, 105, 30, 0.4);
+			}
+			
+			.cta-button.green {
+				background: #228B22;
+			}
+			
+			.cta-button.green:hover {
+				background: #32CD32;
+				box-shadow: 0 8px 25px rgba(34, 139, 34, 0.4);
 			}
 			
 			.portfolio-preview {
@@ -277,6 +292,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					font-size: 1.1rem;
 				}
 				
+				.cta-buttons {
+					gap: 0.75rem;
+				}
+				
+				.cta-button {
+					padding: 0.8rem 1.5rem;
+					font-size: 0.9rem;
+					min-width: 0;
+					flex: 1;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				
 				.portfolio-preview {
 					padding: 2rem 1rem;
 				}
@@ -304,13 +333,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<Image src="/juliette_banner.jpg" alt="Juliette Stephens in her woodworking shop - Chaos Agent Woodworking" width={800} height={600} />
 				</div>
 				<div class="hero-content">
-					<h1>Handcrafted Woodworking Excellence</h1>
-					<p>Discover unique, custom woodworking pieces crafted with passion and precision. From furniture to decorative items, each piece tells a story of craftsmanship and creativity.</p>
-					<a href="#contact" class="cta-button">Get In Touch</a>
+					<h1>Built for you. Built to last.</h1>
+					<p>I create custom wood pieces that are built to fit your life, your space, and your style — so you can enjoy something beautiful that lasts for generations.</p>
+						<a href="#contact" class="cta-button">Begin Your Build</a>
+					</div>
 				</div>
 			</section>
 			
-			<section class="portfolio-preview">
+			<!-- <section class="portfolio-preview">
 				<h2>Featured Work</h2>
 				<div class="featured-grid">
 					<div class="featured-item">
@@ -332,7 +362,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="portfolio-cta">
 					<a href="/portfolio" class="cta-button">View Full Portfolio</a>
 				</div>
-			</section>
+			</section> -->
 			
 			<section id="contact" class="contact-section">
 				<h2>Let's Create Something Beautiful Together</h2>
