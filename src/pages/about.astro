@@ -18,12 +18,14 @@ import { Image } from 'astro:assets';
 				font-family: "Matter TRIAL", sans-serif !important;
 			}
 			
-			main {
-				width: calc(100% - 2em);
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 2em;
-			}
+					main {
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 2em;
+			overflow-x: hidden;
+			box-sizing: border-box;
+		}
 			
 			.about-header {
 				display: grid;
@@ -36,14 +38,18 @@ import { Image } from 'astro:assets';
 			
 			.profile-image {
 				width: 600px;
-				height: 600px;
+				height: auto;
 				flex-shrink: 0;
+				overflow: hidden;
+				box-sizing: border-box;
 			}
 			
 			.profile-image img {
 				width: 100%;
-				height: 100%;
+				height: 60vh;
 				object-fit: cover;
+				object-position: top center;
+				display: block;
 			}
 			
 			.title-section h1 {
@@ -78,9 +84,18 @@ import { Image } from 'astro:assets';
 				}
 				
 				.profile-image {
-					width: 500px;
-					height: 500px;
+					width: 100%;
+					max-width: calc(100vw - 4em);
+					height: auto;
 					margin: 0 auto;
+					overflow: hidden;
+					box-sizing: border-box;
+				}
+				
+				.profile-image img {
+					object-position: top center;
+					object-fit: cover;
+					height: 30vh;
 				}
 				
 				.title-section h1 {
@@ -99,7 +114,7 @@ import { Image } from 'astro:assets';
 			<article>
 				<div class="about-header">
 					<div class="profile-image">
-						<Image src="/juliette_salute.png" alt="Juliette Stephens" width={200} height={200} />
+						<Image src="/juliette_salute.png" alt="Juliette Stephens" width={600} height={600} />
 					</div>
 					<div class="title-section">
 						<h1>Meet Juliette Stephens</h1>
