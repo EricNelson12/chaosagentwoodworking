@@ -1,56 +1,131 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
 ---
 
-<Layout
-	title="Meet Juliette Stephens"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/juliette.png"
->
-	<p>
-	 Juliette Stephens is an expert woodworker
-	</p>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Meet Juliette Stephens" description="Meet Juliette Stephens - Expert woodworker and creator of unique, handcrafted pieces" />
+		<style>
+			/* Import Matter TRIAL font */
+			@import url('https://fonts.googleapis.com/css2?family=Matter+TRIAL:wght@300;400;500;600;700&display=swap');
+			
+			/* Apply Matter TRIAL font to all text */
+			body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, label {
+				font-family: "Matter TRIAL", sans-serif !important;
+			}
+			
+			main {
+				width: calc(100% - 2em);
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2em;
+			}
+			
+			.about-header {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				gap: 2rem;
+				align-items: center;
+				margin-bottom: 3rem;
+				padding: 2rem 0;
+			}
+			
+			.profile-image {
+				width: 600px;
+				height: 600px;
+				flex-shrink: 0;
+			}
+			
+			.profile-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			
+			.title-section h1 {
+				margin: 0 0 1rem 0;
+				font-size: 2.5rem;
+				color: rgb(var(--black));
+				line-height: 1.2;
+			}
+			
+			.title-section p {
+				margin: 0;
+				font-size: 1.2rem;
+				color: rgb(var(--gray-dark));
+				line-height: 1.6;
+			}
+			
+			.prose {
+				color: rgb(var(--gray-dark));
+				line-height: 1.7;
+			}
+			
+			.prose p {
+				margin-bottom: 1.5rem;
+				font-size: 1.1rem;
+			}
+			
+			@media (max-width: 768px) {
+				.about-header {
+					grid-template-columns: 1fr;
+					text-align: center;
+					gap: 1.5rem;
+				}
+				
+				.profile-image {
+					width: 500px;
+					height: 500px;
+					margin: 0 auto;
+				}
+				
+				.title-section h1 {
+					font-size: 2rem;
+				}
+				
+				.title-section p {
+					font-size: 1.1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="about-header">
+					<div class="profile-image">
+						<Image src="/juliette_salute.png" alt="Juliette Stephens" width={200} height={200} />
+					</div>
+					<div class="title-section">
+						<h1>Meet Juliette Stephens</h1>
+						<p>Expert woodworker and creator of unique, handcrafted pieces</p>
+					</div>
+				</div>
+				
+				<div class="prose">
+					<p>
+						Juliette Stephens is an expert woodworker with a passion for creating beautiful, functional pieces that blend traditional craftsmanship with modern design. Her work reflects a deep understanding of wood as a material and a commitment to quality that ensures each piece will last for generations.
+					</p>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+					<p>
+						With years of experience in the craft, Juliette has developed a unique style that honors the natural beauty of wood while creating pieces that fit seamlessly into contemporary homes. Her attention to detail and dedication to sustainable practices make her work stand out in the world of custom woodworking.
+					</p>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+					<p>
+						From custom furniture to decorative items, Juliette approaches each project with creativity and precision. She believes that every piece of wood has a story to tell, and her work helps bring those stories to life in homes and spaces where they can be appreciated and enjoyed.
+					</p>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
-
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+					<p>
+						Whether you're looking for a statement piece for your home or a custom solution for a specific need, Juliette's expertise and artistic vision ensure that the final result will exceed your expectations. Her commitment to quality craftsmanship and personalized service makes her the ideal partner for bringing your woodworking dreams to reality.
+					</p>
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>

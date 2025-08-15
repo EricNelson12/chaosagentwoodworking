@@ -98,6 +98,81 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				box-shadow: 0 8px 25px rgba(210, 105, 30, 0.4);
 			}
 			
+			.portfolio-preview {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 4rem 2rem;
+				text-align: center;
+			}
+			
+			.portfolio-preview h2 {
+				font-size: 2.5rem;
+				margin-bottom: 3rem;
+				color: #8B4513;
+				position: relative;
+			}
+			
+			.portfolio-preview h2::after {
+				content: '';
+				position: absolute;
+				bottom: -15px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 100px;
+				height: 3px;
+				background: linear-gradient(135deg, #8B4513, #A0522D);
+				border-radius: 2px;
+			}
+			
+			.featured-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin-bottom: 3rem;
+			}
+			
+			.featured-item {
+				background: white;
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+				transition: all 0.3s ease;
+				border: 1px solid #f0f0f0;
+			}
+			
+			.featured-item:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 12px 40px rgba(139, 69, 19, 0.2);
+			}
+			
+			.featured-item img {
+				width: 100%;
+				height: 250px;
+				object-fit: cover;
+				transition: transform 0.3s ease;
+			}
+			
+			.featured-item:hover img {
+				transform: scale(1.05);
+			}
+			
+			.featured-item h3 {
+				font-size: 1.4rem;
+				font-weight: 600;
+				color: #8B4513;
+				margin: 1.5rem 1.5rem 0.5rem 1.5rem;
+			}
+			
+			.featured-item p {
+				color: #666;
+				line-height: 1.6;
+				margin: 0 1.5rem 1.5rem 1.5rem;
+			}
+			
+			.portfolio-cta {
+				margin-top: 2rem;
+			}
+			
 			.contact-section {
 				max-width: 800px;
 				margin: 0 auto;
@@ -202,6 +277,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					font-size: 1.1rem;
 				}
 				
+				.portfolio-preview {
+					padding: 2rem 1rem;
+				}
+				
+				.featured-grid {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+				
 				.contact-section {
 					padding: 2rem 1rem;
 				}
@@ -223,6 +307,30 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<h1>Handcrafted Woodworking Excellence</h1>
 					<p>Discover unique, custom woodworking pieces crafted with passion and precision. From furniture to decorative items, each piece tells a story of craftsmanship and creativity.</p>
 					<a href="#contact" class="cta-button">Get In Touch</a>
+				</div>
+			</section>
+			
+			<section class="portfolio-preview">
+				<h2>Featured Work</h2>
+				<div class="featured-grid">
+					<div class="featured-item">
+						<img src="/woodbanner2_final.webp" alt="Invisi-table" />
+<h3>Invisi-table</h3>
+						<p>Handcrafted oak coffee table with natural finish</p>
+					</div>
+					<div class="featured-item">
+						<img src="/clog.jpeg" alt="Traditional Wooden Clogs" />
+						<h3>Traditional Clogs</h3>
+						<p>Hand-carved wooden clogs in various sizes</p>
+					</div>
+					<div class="featured-item">
+						<img src="/wood-texture.svg" alt="Wooden Cutting Board" />
+						<h3>Cutting Boards</h3>
+						<p>End-grain cutting boards from premium hardwoods</p>
+					</div>
+				</div>
+				<div class="portfolio-cta">
+					<a href="/portfolio" class="cta-button">View Full Portfolio</a>
 				</div>
 			</section>
 			

@@ -21,7 +21,20 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 		padding: 1em 0.5em;
 		color: var(--black);
 		border-bottom: 4px solid transparent;
+		transition: all 0.3s ease;
 	}
+	
+	a.active {
+		color: #8B4513;
+		border-bottom-color: #8B4513;
+		font-weight: 600;
+	}
+	
+	a:hover {
+		color: #8B4513;
+		border-bottom-color: #8B4513;
+	}
+	
 	@media (min-width: 721px) {
 		a {
 			font-size: 1.5em;

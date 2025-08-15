@@ -1,0 +1,354 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import { SITE_TITLE } from '../consts';
+
+// Sample portfolio data - in a real app, this would come from a CMS or database
+const portfolioItems = {
+  furniture: [
+    {
+      id: 1,
+      title: "Invisi-table",
+      description: "Handcrafted oak coffee table with natural finish",
+      image: "/woodbanner2_final.webp",
+      category: "furniture"
+    },
+    {
+      id: 2,
+      title: "Custom Bookshelf",
+      description: "Solid wood bookshelf with adjustable shelves",
+      image: "/woodbanner2.webp",
+      category: "furniture"
+    },
+    {
+      id: 3,
+      title: "Dining Table Set",
+      description: "Farmhouse style dining table with matching chairs",
+      image: "/woodbanner.jpeg",
+      category: "furniture"
+    }
+  ],
+  clogs: [
+    {
+      id: 4,
+      title: "Traditional Wooden Clogs",
+      description: "Hand-carved wooden clogs in various sizes",
+      image: "/clog.jpeg",
+      category: "clogs"
+    },
+    {
+      id: 5,
+      title: "Decorative Clog Collection",
+      description: "Ornamental clogs perfect for home decoration",
+      image: "/clog.svg",
+      category: "clogs"
+    }
+  ],
+  misc: [
+    {
+      id: 6,
+      title: "Wooden Cutting Board",
+      description: "End-grain cutting board made from premium hardwoods",
+      image: "/wood-texture.svg",
+      category: "misc"
+    },
+    {
+      id: 7,
+      title: "Custom Signage",
+      description: "Personalized wooden signs and plaques",
+      image: "/juliette_banner.jpg",
+      category: "misc"
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Portfolio - ${SITE_TITLE}`} description="Explore our handcrafted woodworking portfolio featuring furniture, clogs, and miscellaneous items." />
+		<style>
+			/* Import Matter TRIAL font */
+			@import url('https://fonts.googleapis.com/css2?family=Matter+TRIAL:wght@300;400;500;600;700&display=swap');
+			
+			/* Override global main padding for portfolio page */
+			main {
+				padding: 2rem !important;
+				width: 100% !important;
+				max-width: 1200px !important;
+				margin: 0 auto !important;
+			}
+			
+			/* Apply Matter TRIAL font */
+			body, h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, label {
+				font-family: "Matter TRIAL", sans-serif !important;
+			}
+			
+
+			
+			.filter-tabs {
+				display: flex;
+				justify-content: center;
+				gap: 1rem;
+				margin-bottom: 3rem;
+				flex-wrap: wrap;
+			}
+			
+			.filter-tab {
+				padding: 0.75rem 1.5rem;
+				border: 2px solid #8B4513;
+				background: transparent;
+				color: #8B4513;
+				border-radius: 8px;
+				cursor: pointer;
+				font-weight: 600;
+				transition: all 0.3s ease;
+				font-size: 1rem;
+			}
+			
+			.filter-tab:hover {
+				background: #8B4513;
+				color: white;
+				transform: translateY(-2px);
+			}
+			
+			.filter-tab.active {
+				background: #8B4513;
+				color: white;
+				box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+			}
+			
+			.portfolio-section {
+				margin-bottom: 4rem;
+			}
+			
+			.section-title {
+				font-size: 2.5rem;
+				color: #8B4513;
+				margin-bottom: 2rem;
+				text-align: center;
+				position: relative;
+			}
+			
+			.section-title::after {
+				content: '';
+				position: absolute;
+				bottom: -10px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 80px;
+				height: 3px;
+				background: linear-gradient(135deg, #8B4513, #A0522D);
+				border-radius: 2px;
+			}
+			
+			.gallery-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin-bottom: 3rem;
+			}
+			
+			.portfolio-item {
+				background: white;
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+				transition: all 0.3s ease;
+				border: 1px solid #f0f0f0;
+			}
+			
+			.portfolio-item:hover {
+				transform: translateY(-8px);
+				box-shadow: 0 12px 40px rgba(139, 69, 19, 0.2);
+			}
+			
+			.item-image {
+				width: 100%;
+				height: 250px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.item-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.3s ease;
+			}
+			
+			.portfolio-item:hover .item-image img {
+				transform: scale(1.05);
+			}
+			
+			.item-content {
+				padding: 1.5rem;
+			}
+			
+			.item-title {
+				font-size: 1.4rem;
+				font-weight: 600;
+				color: #8B4513;
+				margin-bottom: 0.5rem;
+			}
+			
+			.item-description {
+				color: #666;
+				line-height: 1.6;
+				margin-bottom: 1rem;
+			}
+			
+			.item-category {
+				display: inline-block;
+				background: linear-gradient(135deg, #8B4513, #A0522D);
+				color: white;
+				padding: 0.3rem 0.8rem;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+			
+			.hidden {
+				display: none;
+			}
+			
+			@media (max-width: 768px) {
+				main {
+					padding: 1rem !important;
+				}
+				
+				.portfolio-header h1 {
+					font-size: 2rem;
+				}
+				
+				.filter-tabs {
+					flex-direction: column;
+					align-items: center;
+				}
+				
+				.filter-tab {
+					width: 200px;
+				}
+				
+				.gallery-grid {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="filter-tabs">
+				<button class="filter-tab active" data-category="all">All Items</button>
+				<button class="filter-tab" data-category="furniture">Furniture</button>
+				<button class="filter-tab" data-category="clogs">Clogs</button>
+				<button class="filter-tab" data-category="misc">Misc</button>
+			</div>
+			
+			<div class="portfolio-section" id="furniture-section">
+				<h2 class="section-title">Furniture</h2>
+				<div class="gallery-grid">
+					{portfolioItems.furniture.map((item) => (
+						<div class="portfolio-item" data-category={item.category}>
+							<div class="item-image">
+								<img src={item.image} alt={item.title} />
+							</div>
+							<div class="item-content">
+								<h3 class="item-title">{item.title}</h3>
+								<p class="item-description">{item.description}</p>
+								<span class="item-category">{item.category}</span>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+			
+			<div class="portfolio-section" id="clogs-section">
+				<h2 class="section-title">Clogs</h2>
+				<div class="gallery-grid">
+					{portfolioItems.clogs.map((item) => (
+						<div class="portfolio-item" data-category={item.category}>
+							<div class="item-image">
+								<img src={item.image} alt={item.title} />
+							</div>
+							<div class="item-content">
+								<h3 class="item-title">{item.title}</h3>
+								<p class="item-description">{item.description}</p>
+								<span class="item-category">{item.category}</span>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+			
+			<div class="portfolio-section" id="misc-section">
+				<h2 class="section-title">Miscellaneous</h2>
+				<div class="gallery-grid">
+					{portfolioItems.misc.map((item) => (
+						<div class="portfolio-item" data-category={item.category}>
+							<div class="item-image">
+								<img src={item.image} alt={item.title} />
+							</div>
+							<div class="item-content">
+								<h3 class="item-title">{item.title}</h3>
+								<p class="item-description">{item.description}</p>
+								<span class="item-category">{item.category}</span>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</main>
+		
+		<script>
+			// Filter functionality
+			document.addEventListener('DOMContentLoaded', function() {
+				const filterTabs = document.querySelectorAll('.filter-tab') as NodeListOf<HTMLElement>;
+				const portfolioItems = document.querySelectorAll('.portfolio-item') as NodeListOf<HTMLElement>;
+				const portfolioSections = document.querySelectorAll('.portfolio-section') as NodeListOf<HTMLElement>;
+				
+				filterTabs.forEach(tab => {
+					tab.addEventListener('click', function(this: HTMLElement) {
+						const category = this.getAttribute('data-category');
+						
+						// Update active tab
+						filterTabs.forEach(t => t.classList.remove('active'));
+						this.classList.add('active');
+						
+						// Filter items
+						portfolioItems.forEach(item => {
+							if (category === 'all' || item.getAttribute('data-category') === category) {
+								(item as HTMLElement).style.display = 'block';
+							} else {
+								(item as HTMLElement).style.display = 'none';
+							}
+						});
+						
+						// Show/hide sections based on filter
+						portfolioSections.forEach(section => {
+							if (category === 'all') {
+								(section as HTMLElement).style.display = 'block';
+							} else {
+								const sectionId = section.id;
+								const sectionCategory = sectionId.replace('-section', '');
+								if (sectionCategory === category) {
+									(section as HTMLElement).style.display = 'block';
+								} else {
+									(section as HTMLElement).style.display = 'none';
+								}
+							}
+						});
+					});
+				});
+			});
+		</script>
+		
+		<Footer />
+	</body>
+</html> 
