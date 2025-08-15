@@ -71,6 +71,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				line-height: 1.2;
 			}
 			
+			.hero-content h1 br {
+				display: none;
+			}
+			
 			.hero-content p {
 				font-size: 1.3rem;
 				margin-bottom: 2.5rem;
@@ -275,7 +279,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				}
 				
 				.hero-image img {
-					height: calc(50vh + 30px);
+					height: calc(40vh + 40px);
+					object-position: center top;
 					margin-bottom: -30px;
 				}
 				
@@ -286,6 +291,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				
 				.hero-content h1 {
 					font-size: 2rem;
+					line-height: 1.1;
+				}
+				
+				.hero-content h1 br {
+					display: block;
 				}
 				
 				.hero-content p {
@@ -333,7 +343,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<Image src="/juliette_banner.jpg" alt="Juliette Stephens in her woodworking shop - Chaos Agent Woodworking" width={800} height={600} />
 				</div>
 				<div class="hero-content">
-					<h1>Built for you. Built to last.</h1>
+					<h1>Built for you. <br>Built to last.</h1>
 					<p>I create custom wood pieces that are built to fit your life, your space, and your style — so you can enjoy something beautiful that lasts for generations.</p>
 						<a href="#contact" class="cta-button">Begin Your Build</a>
 					</div>
