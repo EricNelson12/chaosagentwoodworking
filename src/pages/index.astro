@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -216,7 +217,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<main>
 			<section class="hero-section">
 				<div class="hero-image">
-					<img src="/juliette_banner.jpg" alt="Juliette Stephens in her woodworking shop - Chaos Agent Woodworking" />
+					<Image src="/juliette_banner.jpg" alt="Juliette Stephens in her woodworking shop - Chaos Agent Woodworking" width={800} height={600} />
 				</div>
 				<div class="hero-content">
 					<h1>Handcrafted Woodworking Excellence</h1>
