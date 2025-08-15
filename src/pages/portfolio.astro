@@ -77,8 +77,10 @@ const portfolioItems = {
 			main {
 				padding: 2rem !important;
 				width: 100% !important;
-				max-width: 1200px !important;
+				max-width: 100% !important;
 				margin: 0 auto !important;
+				box-sizing: border-box !important;
+				overflow-x: hidden !important;
 			}
 			
 			/* Apply Matter TRIAL font */
@@ -86,14 +88,21 @@ const portfolioItems = {
 				font-family: "Matter TRIAL", sans-serif !important;
 			}
 			
-
+			.portfolio-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 1rem;
+				box-sizing: border-box;
+			}
 			
 			.filter-tabs {
-				display: flex;
-				justify-content: center;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
 				gap: 1rem;
 				margin-bottom: 3rem;
-				flex-wrap: wrap;
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
 			}
 			
 			.filter-tab {
@@ -106,6 +115,7 @@ const portfolioItems = {
 				font-weight: 600;
 				transition: all 0.3s ease;
 				font-size: 1rem;
+				width: 100%;
 			}
 			
 			.filter-tab:hover {
@@ -221,17 +231,22 @@ const portfolioItems = {
 					padding: 1rem !important;
 				}
 				
+				.portfolio-container {
+					padding: 0 0.5rem;
+				}
+				
 				.portfolio-header h1 {
 					font-size: 2rem;
 				}
 				
 				.filter-tabs {
-					flex-direction: column;
-					align-items: center;
+					grid-template-columns: 1fr 1fr;
+					max-width: 400px;
 				}
 				
 				.filter-tab {
-					width: 200px;
+					font-size: 0.9rem;
+					padding: 0.6rem 1rem;
 				}
 				
 				.gallery-grid {
@@ -244,64 +259,66 @@ const portfolioItems = {
 	<body>
 		<Header />
 		<main>
-			<div class="filter-tabs">
-				<button class="filter-tab active" data-category="all">All Items</button>
-				<button class="filter-tab" data-category="furniture">Furniture</button>
-				<button class="filter-tab" data-category="clogs">Clogs</button>
-				<button class="filter-tab" data-category="misc">Misc</button>
-			</div>
-			
-			<div class="portfolio-section" id="furniture-section">
-				<h2 class="section-title">Furniture</h2>
-				<div class="gallery-grid">
-					{portfolioItems.furniture.map((item) => (
-						<div class="portfolio-item" data-category={item.category}>
-							<div class="item-image">
-								<img src={item.image} alt={item.title} />
-							</div>
-							<div class="item-content">
-								<h3 class="item-title">{item.title}</h3>
-								<p class="item-description">{item.description}</p>
-								<span class="item-category">{item.category}</span>
-							</div>
-						</div>
-					))}
+			<div class="portfolio-container">
+				<div class="filter-tabs">
+					<button class="filter-tab active" data-category="all">All Items</button>
+					<button class="filter-tab" data-category="clogs">Clogs</button>
+					<button class="filter-tab" data-category="furniture">Furniture</button>
+					<button class="filter-tab" data-category="misc">Misc</button>
 				</div>
-			</div>
-			
-			<div class="portfolio-section" id="clogs-section">
-				<h2 class="section-title">Clogs</h2>
-				<div class="gallery-grid">
-					{portfolioItems.clogs.map((item) => (
-						<div class="portfolio-item" data-category={item.category}>
-							<div class="item-image">
-								<img src={item.image} alt={item.title} />
+				
+				<div class="portfolio-section" id="furniture-section">
+					<h2 class="section-title">Furniture</h2>
+					<div class="gallery-grid">
+						{portfolioItems.furniture.map((item) => (
+							<div class="portfolio-item" data-category={item.category}>
+								<div class="item-image">
+									<img src={item.image} alt={item.title} />
+								</div>
+								<div class="item-content">
+									<h3 class="item-title">{item.title}</h3>
+									<p class="item-description">{item.description}</p>
+									<span class="item-category">{item.category}</span>
+								</div>
 							</div>
-							<div class="item-content">
-								<h3 class="item-title">{item.title}</h3>
-								<p class="item-description">{item.description}</p>
-								<span class="item-category">{item.category}</span>
-							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
-			</div>
-			
-			<div class="portfolio-section" id="misc-section">
-				<h2 class="section-title">Miscellaneous</h2>
-				<div class="gallery-grid">
-					{portfolioItems.misc.map((item) => (
-						<div class="portfolio-item" data-category={item.category}>
-							<div class="item-image">
-								<img src={item.image} alt={item.title} />
+				
+				<div class="portfolio-section" id="clogs-section">
+					<h2 class="section-title">Clogs</h2>
+					<div class="gallery-grid">
+						{portfolioItems.clogs.map((item) => (
+							<div class="portfolio-item" data-category={item.category}>
+								<div class="item-image">
+									<img src={item.image} alt={item.title} />
+								</div>
+								<div class="item-content">
+									<h3 class="item-title">{item.title}</h3>
+									<p class="item-description">{item.description}</p>
+									<span class="item-category">{item.category}</span>
+								</div>
 							</div>
-							<div class="item-content">
-								<h3 class="item-title">{item.title}</h3>
-								<p class="item-description">{item.description}</p>
-								<span class="item-category">{item.category}</span>
+						))}
+					</div>
+				</div>
+				
+				<div class="portfolio-section" id="misc-section">
+					<h2 class="section-title">Miscellaneous</h2>
+					<div class="gallery-grid">
+						{portfolioItems.misc.map((item) => (
+							<div class="portfolio-item" data-category={item.category}>
+								<div class="item-image">
+									<img src={item.image} alt={item.title} />
+								</div>
+								<div class="item-content">
+									<h3 class="item-title">{item.title}</h3>
+									<p class="item-description">{item.description}</p>
+									<span class="item-category">{item.category}</span>
+								</div>
 							</div>
-						</div>
-					))}
+						))}
+					</div>
 				</div>
 			</div>
 		</main>
